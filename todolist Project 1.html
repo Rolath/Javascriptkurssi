@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To do list javascript Project 1</title>
+  <meta type="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<style>
+  * { 
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    font-family: helvetica, arial, sans-serif;
+  }
+  footer, section, header, aside, figure {
+    display: block;
+  }
+  ul li {
+  background: #ccffeb;
+  margin: 5px;
+}
+
+  p {
+  background: #cce0ff;
+  font-size: 20px;
+  margin: 5px;
+}
+</style>
+</head>
+<body>
+  <header><h1>TO DO LIST</h1></header>
+  <section>
+    <ul id="todolist"></ul>
+    <form action="#" method="post">
+      <div>
+        <label for="newitem">Add item</label>
+        <input type="text" name="newitem" id="newitem" 
+               placeholder="Write here your task" />
+        <input type="submit" value="Add" />
+        <p>Write your task to the input field and click on the task to delete it</p>
+      </div>
+    </form>
+  </section>
+  <footer>
+  </footer>
+<script>
+var todo = document.querySelector( '#todolist' ),
+    form = document.querySelector( 'form' ),
+    field = document.querySelector( '#newitem' );
+    
+form.addEventListener( 'submit', function( ev ) {
+  var text = field.value;
+  if ( text !== '' ) {
+    todo.innerHTML += '<li>' + text + '</li>';
+    field.value = '';
+    field.focus();
+  }
+  ev.preventDefault();
+}, false);
+
+todo.addEventListener( 'click', function( ev ) {
+  var t = ev.target;
+  if ( t.tagName === 'LI' ) {
+    t.parentNode.removeChild( t );
+  };
+  ev.preventDefault();
+}, false);
+
+
+
+</script>
+</body>
+</html>
